@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const {emailRegex} = require("../validators/constants");
 
 const MerchantSchema = new Schema(
     {
@@ -8,7 +9,7 @@ const MerchantSchema = new Schema(
             type: String,
             unique: true,
             required: true,
-            match: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+            match: emailRegex
         }
     },
     { timestamps: true }
