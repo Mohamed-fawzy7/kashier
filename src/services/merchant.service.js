@@ -1,4 +1,5 @@
 const MerchantRepoistory = require("../repositories/merchant.repository");
+const CustomError = require("../config/customError");
 
 class MerchantService {
   static async addMerchants(merchants) {
@@ -11,6 +12,14 @@ class MerchantService {
     const merchant = await MerchantRepoistory.getMerchant(filters);
 
     return merchant;
+  }
+
+  static async validateMerchantExists(merchantId) {
+    const merchant = await this.getMerchant({ _id: merchantId });
+
+    if (!merchant) {
+      throw new CustomError("merchant doesn't exist", 400);
+    }
   }
 }
 

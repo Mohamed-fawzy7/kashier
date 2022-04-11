@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const {currencies, operations } = require("../validators/constants");
 
 const TransactionSchema = new Schema(
     {
@@ -7,12 +8,12 @@ const TransactionSchema = new Schema(
         merchantId: { type: Schema.Types.ObjectId, ref: 'Merchant', required: true },
         currency: {
             type: String,
-            enum: ["USD", "EGP", "EUR"],
+            enum: currencies,
             required: true
         },
         operation: {
             type: String,
-            enum: ["pay", "refund"],
+            enum: operations,
             required: true
         }
     },
