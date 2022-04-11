@@ -25,6 +25,87 @@ class TransactionsController {
       res.status(errorResponse.statusCode).json(errorResponse);
     }
   }
+
+  static async getAllTransactions(req, res) {
+    try {
+      const transactions = await TransactionsService.getAllTransactions();
+
+      res.status(200).json({
+        status: true,
+        statusCode: 200,
+        data: transactions,
+      });
+    } catch (error) {
+      const errorResponse = formulateErrorResponse(error);
+
+      res.status(errorResponse.statusCode).json(errorResponse);
+    }
+  }
+
+  static async getTransaction(req, res) {
+    try {
+      const transactionId = req.params.transactionId;
+      TransactionsValidator.validateMongoId(transactionId);
+      const transaction = await TransactionsService.getTransaction(
+        transactionId
+      );
+
+      res.status(200).json({
+        status: true,
+        statusCode: 200,
+        data: transaction,
+      });
+    } catch (error) {
+      const errorResponse = formulateErrorResponse(error);
+
+      res.status(errorResponse.statusCode).json(errorResponse);
+    }
+  }
+
+  static async deleteTransaction(req, res) {
+    try {
+      const transactionId = req.params.transactionId;
+      TransactionsValidator.validateMongoId(transactionId);
+      const transaction = await TransactionsService.deleteTransaction(
+        transactionId
+      );
+
+      res.status(200).json({
+        status: true,
+        statusCode: 200,
+        message: "transaction deleted successfully",
+        data: transaction,
+      });
+    } catch (error) {
+      const errorResponse = formulateErrorResponse(error);
+
+      res.status(errorResponse.statusCode).json(errorResponse);
+    }
+  }
+
+  static async updateTransaction(req, res) {
+    try {
+      const transactionId = req.params.transactionId;
+      TransactionsValidator.validateMongoId(transactionId);
+      const transactionInfo = req.body;
+      TransactionsValidator.validateUpdateTransaction(transactionInfo);
+      const transaction = await TransactionsService.updateTransaction(
+        transactionId,
+        transactionInfo
+      );
+
+      res.status(200).json({
+        status: true,
+        statusCode: 200,
+        message: "transaction updated successfully",
+        data: transaction,
+      });
+    } catch (error) {
+      const errorResponse = formulateErrorResponse(error);
+
+      res.status(errorResponse.statusCode).json(errorResponse);
+    }
+  }
 }
 
 module.exports = TransactionsController;
