@@ -38,10 +38,6 @@ class TransactionService {
       _id: transactionId,
     });
 
-    if (!transaction) {
-      throw new CustomError("no transaction found", 400);
-    }
-
     await TransactionRepoistory.deleteTransaction({ _id: transactionId });
 
     return transaction;
@@ -49,10 +45,6 @@ class TransactionService {
 
   static async updateTransaction(transactionId, transactionInfo) {
     const transaction = await TransactionRepoistory.getTransaction({_id: transactionId});
-
-    if (!transaction) {
-      throw new CustomError("no transaction found", 400);
-    }
 
     if(transactionInfo.merchantId){
       await MerchantService.validateMerchantExists(transactionInfo.merchantId);
