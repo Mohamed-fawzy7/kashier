@@ -28,4 +28,4 @@ class MerchantController{
     }
 }
 
-module.exports = MerchantService;
+module.exports = MerchantController;
