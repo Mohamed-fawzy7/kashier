@@ -9,7 +9,7 @@ const merchantSchema = Joi.object().keys({
 const MerchantsSchema = Joi.array().items(merchantSchema);
 
 class MerchantValidator {
-  validateAddingMerchants(merchants) {
+  static validateAddingMerchants(merchants) {
     const validatationResult = MerchantsSchema.validate(merchants);
 
     validateJoiResult(validatationResult);
