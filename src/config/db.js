@@ -7,7 +7,6 @@ const mongoConfig = {
 };
 const mongoConnectionString = process.env.MONGO_CONNECTION_STRING;
 
-console.log({ mongoConnectionString });
 mongoose.connect(mongoConnectionString, mongoConfig);
 
 const db = mongoose.connection;
