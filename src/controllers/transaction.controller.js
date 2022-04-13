@@ -6,7 +6,6 @@ class TransactionsController {
   static async addTransaction(req, res) {
     try {
       const transaction = req.body;
-      console.log({ transaction });
       TransactionsValidator.validateAddingTransaction(transaction);
 
       const addedTransaction = await TransactionsService.addTransaction(
@@ -28,7 +27,7 @@ class TransactionsController {
 
   static async getAllTransactions(req, res) {
     try {
-      const transactions = await TransactionsService.getAllTransactions();
+      const transactions = await TransactionsService.getTransactions({});
 
       res.status(200).json({
         status: true,

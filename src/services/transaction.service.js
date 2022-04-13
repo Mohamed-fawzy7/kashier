@@ -15,8 +15,8 @@ class TransactionService {
     return addedTransaction;
   }
 
-  static async getAllTransactions() {
-    const transactions = await TransactionRepoistory.getTransactions({});
+  static async getTransactions(filters) {
+    const transactions = await TransactionRepoistory.getTransactions(filters);
 
     return transactions;
   }

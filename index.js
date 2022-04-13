@@ -4,6 +4,7 @@ const app = express();
 require("dotenv").config();
 
 require("./src/config/db");
+require("./src/config/crons");
 
 app.use(express.json());
 app.use("/transactions", TransactionRouter);

@@ -1,6 +1,5 @@
 const CustomError = require("../config/customError");
 module.exports = (validationResult) => {
-  console.log({ validationResult });
   if (
     validationResult &&
     validationResult.error &&

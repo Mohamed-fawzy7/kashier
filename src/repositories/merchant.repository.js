@@ -12,6 +12,12 @@ class MerchantRepoistory {
 
     return merchant;
   }
+
+  static async getMerchants(filters) {
+    const merchants = await Merchant.find(filters);
+
+    return merchants;
+  }
 }
 
 module.exports = MerchantRepoistory;

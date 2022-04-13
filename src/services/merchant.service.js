@@ -14,6 +14,12 @@ class MerchantService {
     return merchant;
   }
 
+  static async getMerchants(filters) {
+    const merchants = await MerchantRepoistory.getMerchants(filters);
+
+    return merchants;
+  }
+
   static async validateMerchantExists(merchantId) {
     const merchant = await this.getMerchant({ _id: merchantId });
 
