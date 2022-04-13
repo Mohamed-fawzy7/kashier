@@ -1,4 +1,11 @@
 {
+  "name": "kashier",
+  "scripts": {
+    "start": "node index"
+  },
+  "engines": {
+    "node": "14.x"
+  },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
     "cron": "^1.8.2",
